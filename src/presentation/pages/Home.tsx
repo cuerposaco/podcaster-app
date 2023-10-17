@@ -3,9 +3,10 @@ import { getPodcasts } from '../../domain/services/podcast';
 import {useRequest} from "../hooks/request";
 import PodcastList from '../components/PodcastList';
 import FilterBar from '../components/FilterBar';
+import styled from 'styled-components';
 
 
-function Home() {
+function Home({className}: any) {
   const [filter, setFilter] = useState<string|null>(null);
   const [items, setItems] = useState<any[]>([]);
   const [filteredItems, setFilteredItems] = useState<any[]>([]);
@@ -33,11 +34,13 @@ function Home() {
   }, [items, filter]);
 
   return (
-    <div>
+    <div className={className}>
       <FilterBar onFilterChange={(value:string) => setFilter(value)} itemsCount={items.length} />
       <PodcastList items={filteredItems} />
     </div>
   )
 }
 
-export default Home;
+export default styled(Home)`
+
+`;

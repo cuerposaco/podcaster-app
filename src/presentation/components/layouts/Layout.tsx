@@ -2,21 +2,34 @@ import React from 'react';
 import { Outlet, Link } from "react-router-dom";
 import { useRequest } from "../../hooks/request";
 import Header from '../Header';
+import Container from '../ui/Container';
+import styled from 'styled-components';
 
-function Layout() {
+
+function Layout({ className }: any) {
   const { request } = useRequest();
 
   return (
-    <div>
+    <div className={className}>
       <Header
         titleComponent={<Link to="/">Podcaster</Link>}
-        isLoading={Boolean(request?.loading)}
+        isLoading={Boolean(request.loading)}
       />
-      <main>
+      <main id="container">
         <Outlet />
       </main>
     </div>
   );
 }
 
-export default Layout;
+export default styled(Layout)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  #container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+`;

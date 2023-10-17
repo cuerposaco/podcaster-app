@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useParams } from "react-router-dom";
+import styled from "styled-components";
 import { getPodcastById } from '../../../domain/services/podcast';
 import { PodcastSelectedContext, PodcastSelected } from '../../contexts/PodcastContext';
 import {useRequest} from "../../hooks/request";
 import PodcastCard from '../PodcastCard';
 
-function LayoutPodcast() {
+function LayoutPodcast({className}: any) {
   const { podcastId } = useParams<"podcastId">();
   const [podcastData, setPodcastData] = useState<PodcastSelected | null>(null);
   const { setRequest } = useRequest();
@@ -26,11 +27,13 @@ function LayoutPodcast() {
   }, [podcastId]);
 
   return (
-    <section id="podcast">
+    <section className={className}>
       {podcastData && (
         <>
-          <PodcastCard name={podcastData.trackName} description={podcastData?.description} image={podcastData.artworkUrl100} />
-          <div>
+          <div className="left-section section">
+            <PodcastCard id={podcastData.collectionId} name={podcastData.trackName} author={podcastData.artistName} description={podcastData?.description} image={podcastData.artworkUrl600} />
+          </div>
+          <div className="right-section section">
             <PodcastSelectedContext.Provider value={podcastData}>
               <Outlet />
             </PodcastSelectedContext.Provider>
@@ -41,4 +44,16 @@ function LayoutPodcast() {
   );
 }
 
-export default LayoutPodcast;
+export default styled(LayoutPodcast)`
+  display: flex;
+  flex-direction: row;
+  .section {
+    padding: 1em;
+  }
+  .left-section {
+    width: 30%;
+  }
+  .right-section {
+    width: 70%;
+  }
+`;

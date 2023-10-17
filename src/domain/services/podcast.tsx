@@ -54,7 +54,7 @@ export const requestPodcastFeed = (url: string): Promise<any> => request(url, tr
 /**
  * Request Podcast data by Id
  */
-export const requestPodcastById = (id: string): Promise<any> => request(`${PODCAST_LOOKUP}?id=${id}&media=podcast&entity=podcastEpisode`, true)
+export const requestPodcastById = (id: string): Promise<any> => request(`${PODCAST_LOOKUP}?id=${id}`, true)
 
 /**
  * Get All podcasts
