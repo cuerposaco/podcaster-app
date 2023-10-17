@@ -1,25 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route} from "react-router-dom";
+import Home from './presentation/pages/Home';
+import Layout from './presentation/components/Layout';
+import LayoutPodcast from './presentation/components/LayoutPodcast';
+import PodcastEpisodesDetail from './presentation/pages/PodcastEpisodesDetail';
+import PodcastEpisodeDetail from './presentation/pages/PodcastEpisodeDetail';
+import { RequestProvider } from './presentation/contexts/RequestContext';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <RequestProvider>
+      <Routes>
+        <Route
+          path="/"
+          element={<Layout />}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Route index element={<Home />} />
+          <Route path="/podcast/:podcastId" element={<LayoutPodcast />}>
+            <Route index element={<PodcastEpisodesDetail />} />
+            <Route path="/podcast/:podcastId/episode/:episodeId" element={<PodcastEpisodeDetail />} />
+          </Route>
+        </Route>
+          {/* <Route path="about" element={<About />} />
+          <Route path="dashboard" element={<Dashboard />} /> */}
+
+          {/* Using path="*"" means "match anything", so this route
+                  acts like a catch-all for URLs that we don't have explicit
+                  routes for. */}
+          {/* <Route path="*" element={<NoMatch />} /> */}
+      </Routes>
+    </RequestProvider>
   );
 }
 
