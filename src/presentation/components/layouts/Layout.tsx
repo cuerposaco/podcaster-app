@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet, Link } from "react-router-dom";
 import { useRequest } from "../../hooks/request";
 import Header from '../Header';
-import Container from '../ui/Container';
 import styled from 'styled-components';
 
 

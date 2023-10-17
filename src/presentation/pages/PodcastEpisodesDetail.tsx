@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import styled from "styled-components";
 import { PodcastSelected, PodcastSelectedContext } from '../contexts/PodcastContext';
-import Card from '../components/ui/Card'
 import PodcastEpisodesList from '../components/PodcastEpisodesList'
-import Container from '../components/ui/Container';
 
 function PodcastEpisodesDetail({className}:any) {
   const podcast = useContext<PodcastSelected | null>(PodcastSelectedContext);
