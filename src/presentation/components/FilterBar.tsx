@@ -20,6 +20,7 @@ export default styled(FilterBar)`
   justify-content: flex-end;
   flex-wrap: nowrap;
   align-items: center;
+  padding: 1em 0;
 
   .filter-bar__counter {
     border-radius: .5rem;
