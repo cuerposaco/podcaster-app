@@ -54,20 +54,54 @@ export const requestPodcastFeed = (url: string): Promise<any> => request(url, tr
 /**
  * Request Podcast data by Id
  */
-export const requestPodcastById = (id: string): Promise<any> => request(`${PODCAST_LOOKUP}?id=${id}`, true)
+export const requestPodcastById = (id: string): Promise<any> => request(`${PODCAST_LOOKUP}?id=${id}&media=podcast&entity=podcastEpisode`, true)
 
 /**
  * Get All podcasts
  */
 export const getPodcasts = (): Promise<any[]> =>
   requestPodcasts()
-    .then((response) => response?.feed?.entry || []);
+    .then((response) => response?.feed?.entry || [])
+    .then(response => {
+      console.log('--->', response);
+      return response.map((item:any) => ({
+        id: item.id.attributes['im:id'],
+        title: item.title.label,
+        name: item['im:name'].label,
+        author: item['im:artist'].label,
+        image: item['im:image'],
+        summary: item.summary.label
+      }));
+    });
 
 /**
  * Get Podcast by Id
  */
 export const getPodcastById = (id: string): Promise<any> =>
   requestPodcastById(id)
+    /* .then(result => {
+      console.log('getPodcastById', result)
+      const { results } = result;
+
+      const episodes = results
+        .filter((item:any) => item.kind === "podcast-episode")
+        .map((ep:any) => ({
+          id: String(ep.trackId),
+          title: ep.trackName,
+          description: ep.description,
+          enclosure: ep.episodeUrl,
+          duration: ep.trackTimeMillis,
+          pubDate: ep.releaseDate,
+        }));
+
+      const info = {
+        ...results[0],
+        // description: feed.querySelector('rss > channel > description')?.textContent,
+        episodes
+      }
+
+      return info;
+    }) */
     .then(async result => {
       const { results: [podcastInfo] } = result;
       const feed = await requestPodcastFeed(podcastInfo.feedUrl)

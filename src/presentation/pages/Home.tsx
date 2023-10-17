@@ -1,7 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { getPodcasts } from '../../domain/services/podcast';
 import {useRequest} from "../hooks/request";
+import PodcastList from '../components/PodcastList';
+import FilterBar from '../components/FilterBar';
+
 
 function Home() {
   const [filter, setFilter] = useState<string|null>(null);
@@ -26,16 +28,14 @@ function Home() {
     if (!filter) {
       setFilteredItems(items);
     } else {
-      setFilteredItems(items.filter(({ title, 'im:name': name }) => title.label.toLowerCase().includes(filter.toLowerCase()) || name.label.toLowerCase().includes(filter.toLowerCase())));
+      setFilteredItems(items.filter(({ title, name }) => title.toLowerCase().includes(filter.toLowerCase()) || name.toLowerCase().includes(filter.toLowerCase())));
     }
   }, [items, filter]);
 
   return (
     <div>
-      <div id="filter">Filter <input type="text" onChange={(e) => setFilter(e.currentTarget.value)}/></div>
-      <div id="content">
-        {filteredItems.map((item) => (<li key={item.id.attributes['im:id']}><NavLink to={`/podcast/${item.id.attributes['im:id']}`}>{item.title.label}</NavLink></li>))}
-      </div>
+      <FilterBar onFilterChange={(value:string) => setFilter(value)} itemsCount={items.length} />
+      <PodcastList items={filteredItems} />
     </div>
   )
 }

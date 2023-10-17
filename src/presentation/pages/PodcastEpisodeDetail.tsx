@@ -8,7 +8,6 @@ function PodcastEpisodeDetail() {
   const [episode, setEpisode] = useState<Episode|null>(null);
 
   useEffect(() => {
-    // console.log('PodcastEpisodeDetail', podcast);
     const ep = podcast?.episodes?.find(({id}) => id === episodeId) || null;
     setEpisode(ep);
   }, [episodeId])

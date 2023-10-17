@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useParams } from "react-router-dom";
-import { getPodcastById } from '../../domain/services/podcast';
-import { PodcastSelectedContext, PodcastSelected } from '../contexts/PodcastContext';
-import {useRequest} from "../hooks/request";
+import { getPodcastById } from '../../../domain/services/podcast';
+import { PodcastSelectedContext, PodcastSelected } from '../../contexts/PodcastContext';
+import {useRequest} from "../../hooks/request";
+import PodcastCard from '../PodcastCard';
 
 function LayoutPodcast() {
   const { podcastId } = useParams<"podcastId">();
   const [podcastData, setPodcastData] = useState<PodcastSelected | null>(null);
-
-  const { request, setRequest } = useRequest();
+  const { setRequest } = useRequest();
 
   useEffect(() => {
     if(podcastId) {
@@ -27,17 +27,9 @@ function LayoutPodcast() {
 
   return (
     <section id="podcast">
-      <span>request: {JSON.stringify(request)}</span>
       {podcastData && (
         <>
-          <div>
-            <img src={podcastData.artworkUrl100} />
-            <hr />
-            {podcastData?.trackName}
-            <hr />
-            Description:
-            <div dangerouslySetInnerHTML={{__html: podcastData?.description}} />
-          </div>
+          <PodcastCard name={podcastData.trackName} description={podcastData?.description} image={podcastData.artworkUrl100} />
           <div>
             <PodcastSelectedContext.Provider value={podcastData}>
               <Outlet />

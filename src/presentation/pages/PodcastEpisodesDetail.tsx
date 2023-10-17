@@ -1,17 +1,24 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { PodcastSelected, PodcastSelectedContext } from '../contexts/PodcastContext';
+import Card from '../components/ui/Card'
+import PodcastEpisodesList from '../components/PodcastEpisodesList'
 
 function PodcastEpisodesDetail() {
   const podcast = useContext<PodcastSelected | null>(PodcastSelectedContext);
 
   return (
-    <div>
-      Podcast detail
-      <ul>
-        {podcast?.episodes?.map(ep => (<li key={ep.id}><NavLink to={`/podcast/${podcast?.collectionId}/episode/${ep.id}`}>{ep.title}</NavLink></li>))}
-      </ul>
-    </div>
+    <>
+      <Card>
+        <h3>Episodes: {podcast?.episodes.length || 0}</h3>
+      </Card>
+      <Card>
+        <PodcastEpisodesList
+          episodes={podcast?.episodes || []}
+          collectionId={podcast?.collectionId}
+        />
+      </Card>
+    </>
   )
 }
 
