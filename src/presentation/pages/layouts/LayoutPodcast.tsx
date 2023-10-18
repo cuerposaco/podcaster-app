@@ -16,7 +16,6 @@ function LayoutPodcast({className}: any) {
       setRequest({ loading: true });
       getPodcastById(podcastId)
         .then(item => {
-          console.log('getPodcastById', item);
           setPodcastData(item)
         })
         .catch(() => {})

@@ -8,16 +8,13 @@ export const getPodcasts = (): Promise<any[]> => {
   const CACHE_KEY = 'all_podcast';
 
   if (!isExpired(hashEncode(CACHE_KEY))) {
-    console.log('cached data!!!', CACHE_KEY);
     const { data } = getCache(hashEncode(CACHE_KEY));
     return Promise.resolve(data);
   }
 
-  console.log('refresh data!!!', CACHE_KEY);
   return requestPodcasts()
     .then((response) => response?.feed?.entry || [])
     .then(response => {
-      console.log('--->', response);
       return response.map((item:any) => ({
         id: item.id.attributes['im:id'],
         title: item.title.label,
@@ -40,15 +37,12 @@ export const getPodcastById = (id: string): Promise<any> => {
   const CACHE_KEY = `podcast_${id}`;
 
   if (!isExpired(hashEncode(CACHE_KEY))) {
-    console.log('cached data!!!', CACHE_KEY);
     const { data } = getCache(hashEncode(CACHE_KEY));
     return Promise.resolve(data);
   }
 
-  console.log('refresh data!!!', CACHE_KEY);
   return requestPodcastById(id)
     .then(async result => {
-      console.log('getPodcastById', result);
       const { results } = result;
 
       const episodes = results

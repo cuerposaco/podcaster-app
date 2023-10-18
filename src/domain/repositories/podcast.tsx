@@ -12,5 +12,5 @@ export const requestPodcasts = (): Promise<any> => request(PODCAST_SEARCH_URL);
 /**
  * Request Podcast data by Id
  */
-export const requestPodcastById = (id: string): Promise<any> => request(`${PODCAST_LOOKUP}?id=${id}&media=podcast&entity=podcastEpisode&attribute=descriptionTerm`, true)
+export const requestPodcastById = (id: string): Promise<any> => request(`${PODCAST_LOOKUP}?id=${id}&media=podcast&entity=podcastEpisode`, true)
 

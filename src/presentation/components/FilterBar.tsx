@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const FilterBar = ({ className, onFilterChange, itemsCount }: any) => {
   return (
     <div className={`${className} filter-bar`}>
-      <span className="filter-bar__counter">{itemsCount}</span>
+      <span className="filter-bar__counter" data-testid="items-counter">{itemsCount}</span>
       <input
         type="text"
         className="filter-bar__filter"
