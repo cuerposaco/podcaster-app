@@ -42,6 +42,7 @@ export default styled(PodcastEpisodeDetail)`
   }
   .podcast-episode-detail__description {
     border-bottom: 1px solid #ccc;
+    padding: 1em 0;
     a {
       color: dodgerblue
     }

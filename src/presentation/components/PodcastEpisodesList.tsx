@@ -33,6 +33,7 @@ const PodcastEpisodesList = ({ className, episodes, collectionId }: any) => {
 export default styled(PodcastEpisodesList)`
   table {
     border-spacing: 0;
+    width: 100%;
   }
 
   table > thead th {

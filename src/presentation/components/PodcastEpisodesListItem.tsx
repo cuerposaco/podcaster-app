@@ -1,13 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
+import { formatDate, formatTime } from '../../domain/value_objects/date_time';
 
-const PodcastEpisodesListItem = ({ className, id, title, pubDate, duration, link }: any) => {
+const PodcastEpisodesListItem = ({ className, title, pubDate, duration, link }: any) => {
   return (
     <tr className={className}>
       <td className="body-title"><NavLink to={link}>{title}</NavLink></td>
-      <td className="body-date">{(new Date(pubDate)).toLocaleString('en-US', { dateStyle: 'short' })}</td>
-      <td className="body-duration">{duration}</td>
+      <td className="body-date">{formatDate(pubDate)}</td>
+      <td className="body-duration">{(duration && formatTime(duration)) || `--`}</td>
     </tr>
   )
 }
