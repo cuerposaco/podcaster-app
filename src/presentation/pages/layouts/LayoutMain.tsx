@@ -1,11 +1,11 @@
 import React from 'react';
 import { Outlet, Link } from "react-router-dom";
 import { useRequest } from "../../hooks/request";
-import Header from '../Header';
+import Header from '../../components/Header';
 import styled from 'styled-components';
 
 
-function Layout({ className }: any) {
+function LayoutMain({ className }: any) {
   const { request } = useRequest();
 
   return (
@@ -21,7 +21,7 @@ function Layout({ className }: any) {
   );
 }
 
-export default styled(Layout)`
+export default styled(LayoutMain)`
   width: 100%;
   display: flex;
   flex-direction: column;

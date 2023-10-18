@@ -6,7 +6,7 @@ import FilterBar from '../components/FilterBar';
 import styled from 'styled-components';
 
 
-function Home({className}: any) {
+function PodcastsPage({className}: any) {
   const [filter, setFilter] = useState<string|null>(null);
   const [items, setItems] = useState<any[]>([]);
   const [filteredItems, setFilteredItems] = useState<any[]>([]);
@@ -41,6 +41,4 @@ function Home({className}: any) {
   )
 }
 
-export default styled(Home)`
-
-`;
+export default styled(PodcastsPage)``;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { getPodcastById } from '../../../domain/services/podcast';
 import { PodcastSelectedContext, PodcastSelected } from '../../contexts/PodcastContext';
 import {useRequest} from "../../hooks/request";
-import PodcastCard from '../PodcastCard';
+import PodcastCard from '../../components/PodcastCard';
 
 function LayoutPodcast({className}: any) {
   const { podcastId } = useParams<"podcastId">();

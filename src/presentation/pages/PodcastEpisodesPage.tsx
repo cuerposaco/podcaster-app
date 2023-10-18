@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { PodcastSelected, PodcastSelectedContext } from '../contexts/PodcastContext';
 import PodcastEpisodesList from '../components/PodcastEpisodesList'
 
-function PodcastEpisodesDetail({className}:any) {
+function PodcastEpisodesPage({className}:any) {
   const podcast = useContext<PodcastSelected | null>(PodcastSelectedContext);
 
   return (
@@ -21,7 +21,7 @@ function PodcastEpisodesDetail({className}:any) {
   )
 }
 
-export default styled(PodcastEpisodesDetail)`
+export default styled(PodcastEpisodesPage)`
   display: flex;
   flex-direction: column;
 

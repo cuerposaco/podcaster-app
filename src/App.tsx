@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes, Route} from "react-router-dom";
-import Home from './presentation/pages/Home';
-import Layout from './presentation/components/layouts/Layout';
-import LayoutPodcast from './presentation/components/layouts/LayoutPodcast';
-import PodcastEpisodesDetail from './presentation/pages/PodcastEpisodesDetail';
-import PodcastEpisodeDetail from './presentation/pages/PodcastEpisodeDetail';
+import PodcastsPage from './presentation/pages/PodcastsPage';
+import LayoutMain from './presentation/pages/layouts/LayoutMain';
+import LayoutPodcast from './presentation/pages/layouts/LayoutPodcast';
+import PodcastEpisodesPage from './presentation/pages/PodcastEpisodesPage';
+import PodcastEpisodeDetailPage from './presentation/pages/PodcastEpisodeDetailPage';
 import { RequestProvider } from './presentation/contexts/RequestContext';
 
 
@@ -14,12 +14,12 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Layout />}
+          element={<LayoutMain />}
         >
-          <Route index element={<Home />} />
+          <Route index element={<PodcastsPage />} />
           <Route path="/podcast/:podcastId" element={<LayoutPodcast />}>
-            <Route index element={<PodcastEpisodesDetail />} />
-            <Route path="/podcast/:podcastId/episode/:episodeId" element={<PodcastEpisodeDetail />} />
+            <Route index element={<PodcastEpisodesPage />} />
+            <Route path="/podcast/:podcastId/episode/:episodeId" element={<PodcastEpisodeDetailPage />} />
           </Route>
         </Route>
       </Routes>

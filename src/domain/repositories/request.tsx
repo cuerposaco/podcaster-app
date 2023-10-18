@@ -15,7 +15,13 @@ const parseJSON = (data: any) => {
  */
 export const request = (url: string, bypassCORS: boolean = false, retried:boolean = false): Promise<any> => {
   return fetch(bypassCORS ? bypassCors(url) : url)
-    .then(response => response.json())
+    .then(async response => {
+      try {
+        return await response.json();
+      } catch (error) {
+        return response;
+      }
+    })
     .then(result => bypassCORS ? parseJSON(result.contents) : result)
     .catch(error => {
       if (retried) {

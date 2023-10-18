@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { PodcastSelected, PodcastSelectedContext, Episode } from '../contexts/PodcastContext';
 
-function PodcastEpisodeDetail({className}:any) {
+function PodcastEpisodeDetailPage({className}:any) {
   const { episodeId } = useParams<"episodeId">();
   const podcast = useContext<PodcastSelected | null>(PodcastSelectedContext);
   const [episode, setEpisode] = useState<Episode|null>(null);
@@ -28,7 +28,7 @@ function PodcastEpisodeDetail({className}:any) {
   )
 }
 
-export default styled(PodcastEpisodeDetail)`
+export default styled(PodcastEpisodeDetailPage)`
  &.container {
     border-radius: 2px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
