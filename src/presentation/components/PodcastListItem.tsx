@@ -31,6 +31,7 @@ export default styled(PodcastListItem)`
     margin-top: 25%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 0.2rem;
+    z-index: -1;
   }
 
   .podcast-list-item__image-container {
