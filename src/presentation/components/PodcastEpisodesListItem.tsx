@@ -23,13 +23,17 @@ export default styled(PodcastEpisodesListItem)`
     background-color: #f2f2f2;
   }
 
+  &:last-child td {
+    border-bottom: none;
+  }
+
   a {
     color: dodgerblue
   }
+
   .body-title {}
   .body-date {}
   .body-duration {
     text-align: center;
   }
-
 `;
