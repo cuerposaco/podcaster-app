@@ -35,12 +35,31 @@ export default styled(PodcastListItem)`
   }
 
   .podcast-list-item__image-container {
+    position: relative;
+    margin: 0.5em 0;
   }
+
+  .podcast-list-item__image-container:before {
+    content: "";
+    width: 140px;
+    height: 140px;
+    top:0; left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    background-color: white;
+    background-image: ${({ image }) => `url("${image}")`};
+    border-radius: 100%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+  }
+
   .podcast-list-item__image-container__image {
     border-style: none;
     border-radius: 100%;
     max-width: 80%;
     background-color: white;
+    visibility: hidden;
   }
   .podcast-list-item__title {
     padding: 0.5em 0;
