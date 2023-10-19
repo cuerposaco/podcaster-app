@@ -22,6 +22,7 @@ export default styled(PodcastListItem)`
   box-sizing: border-box;
   margin-top: 50px;
   position: relative;
+  width: 275px;
 
   &:after {
     content: '';

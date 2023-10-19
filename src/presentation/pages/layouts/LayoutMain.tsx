@@ -27,8 +27,11 @@ export default styled(LayoutMain)`
   flex-direction: column;
 
   #container {
-    width: 100%;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1280px;
+    min-width: 320px;
   }
 `;
