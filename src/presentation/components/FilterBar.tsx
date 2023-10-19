@@ -23,23 +23,28 @@ export default styled(FilterBar)`
   padding: 1em 0;
 
   .filter-bar__counter {
-    border-radius: .5rem;
-    background-color: dodgerblue;
+    flex-grow: 1;
     padding: 0.2rem 0.5rem;
     margin: 0 0.5rem;
-    color: white;
+    max-width: 4rem;
     font-size: 1.2rem;
     font-weight: bold;
+    text-align: center;
+    color: white;
+    border-radius: 0.5rem;
+    background-color: dodgerblue;
   }
 
   .filter-bar__filter {
-    border: 1px solid #ddd;
-    border-radius: .3rem;
+    flex-grow: 1;
     outline: none;
-    padding: .5rem;
-    min-width: 300px;
+    padding: 0.5rem;
+    min-width: auto;
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 0.3rem;
   }
   .filter-bar__filter::placeholder {
     color: #ddd;
   }
-` ;
+`;

@@ -27,16 +27,20 @@ const PodcastList = ({ className, items }: any) => {
 export default styled(PodcastList)`
   .podcast-list {
     list-style: none;
-    display: flex;
     width: 100%;
-    flex-wrap: wrap;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: flex-start;
 
     .podcast-list__item {
-      width: 25%;
-      padding: 0.7rem;
       box-sizing: border-box;
+      max-width: 275px;
+      padding: 0.7rem;
+      flex-grow: 4;
     }
   }
 `;

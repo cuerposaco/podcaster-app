@@ -46,13 +46,23 @@ function LayoutPodcast({className}: any) {
 export default styled(LayoutPodcast)`
   display: flex;
   flex-direction: row;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: flex-start;
+
   .section {
     padding: 1em;
   }
   .left-section {
-    width: 30%;
+    flex-basis: 33%;
+    flex-grow: 1;
+    min-width: 300px;
   }
   .right-section {
-    width: 70%;
+    flex-basis: 70%;
+    flex-grow: 1;
+  }
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
   }
 `;
