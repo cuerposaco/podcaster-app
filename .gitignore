@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+deploy/dev/nginx/certs/localhost.crt
+deploy/dev/nginx/certs/localhost.key
